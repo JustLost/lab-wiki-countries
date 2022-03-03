@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import countriesData from '../../countries.json';
 
-function CountryDetails() {
+//import countriesData from '../../countries.json';
+
+function CountryDetails(props) {
   const { id } = useParams();
-  const foundCountry = countriesData.find((oneCountry) => {
+  const foundCountry = props.countries.find((oneCountry) => {
     return oneCountry.alpha3Code === id;
   });
 
   const getCountryName = (alpha3Code) => {
-    const foundCountryName = countriesData.find((oneCountry) => {
+    const foundCountryName = props.countries.find((oneCountry) => {
       return oneCountry.alpha3Code === alpha3Code;
     });
     return foundCountryName.name.common;
